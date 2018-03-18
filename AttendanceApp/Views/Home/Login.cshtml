@@ -1,0 +1,49 @@
+﻿@model AttendanceApp.Teachers
+@Styles.Render("~/Content/style.css")
+@Scripts.Render("~/bundles/index")
+
+@{
+    ViewBag.Title = "Login";
+}
+    <div>
+        <div class="wrapper">
+            <div class="containers">
+                <br />
+                <br />
+                <h1>Välkommen!</h1>
+                <br />
+    @if (Session["UserName"] == null)
+    {
+        using (Html.BeginForm("Login", "Home", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            @Html.TextBoxFor(a => a.UserName)
+            @Html.ValidationMessageFor(a => a.UserName)
+            @Html.PasswordFor(a => a.Password)
+            @Html.ValidationMessageFor(a => a.Password)
+            <button type="submit" id="login-button">Login</button>
+
+        }
+    }
+    else
+    {
+            @Html.Action("Index")
+    }
+            </div>
+
+            <ul class="bg-bubbles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
