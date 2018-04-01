@@ -13,5 +13,6 @@ namespace AttendanceApp
         public DbSet<Participation> Participation { get; set; }
         public DbSet<Students> Students { get; set; }
         public DbSet<Teachers> Teachers { get; set; }
+        public DbSet<Init> Init { get; set; }
     }
 }
