@@ -66,7 +66,56 @@ p {
 .secondRow {
     margin-top: -1.4%
 }
+.cardA {
+    width: 99%;
+    height: 300px;
+    cursor: pointer;
+}
+.cardA.flipped {
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
+}
 
+    .cardA.flipped: {
+    }
+
+.cardA .front,
+.cardA .back {
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 60px;
+    color: white;
+    text-align: center;
+    font-size: 4em;
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    box-shadow: 3px 5px 20px 2px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 2px 5px rgba(0, 0, 0, 0.26);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 2px 5px rgba(0, 0, 0, 0.26);
+}
+
+.cardA .back {
+    width: 100%;
+    padding-left: 3%;
+    padding-right: 3%;
+    font-size: 16px;
+    text-align: center;
+    line-height: 25px;
+}
+
+.cardA .back {
+    background: #f7fafc;
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
+}
 .card {
     width: 99%;
     height: 200px;

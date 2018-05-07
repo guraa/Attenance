@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using AttendanceApp.SearchModels;
 using System.Dynamic;
+using System.Data.SqlClient;
 
 namespace AttendanceApp.Controllers
 {
@@ -62,6 +63,28 @@ namespace AttendanceApp.Controllers
                 }
             }
             return View(objUser);
+        }
+
+        [ChildActionOnly]
+        public List<Participation> showParticipantsForClass(string ClassCode)
+        {
+            //använd action och partialview istället för att kunna populera listan på ett bra sätt + uppdatera partialview automatiskt. 
+            using (AttendanceContext db = new AttendanceContext())
+            {
+                var obj = db.Participation.Where(a => a.Code.Equals(ClassCode)).ToList();
+
+                if(obj.Count() > 0)
+                { 
+                    return obj;
+                }
+                else
+                {
+                  
+                    return null;
+                }
+
+            }
+
         }
 
         [HttpPost]

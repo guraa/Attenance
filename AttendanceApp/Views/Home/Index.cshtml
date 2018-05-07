@@ -25,8 +25,7 @@
 
             @if (ViewBag.User != null)
             {
-                <h1>NärvaroAppen</h1>
-                <text>Välkommen @ViewBag.UserName , @ViewBag.ident </text>
+            <h1>Välkommen @ViewBag.UserName!</h1>
                 <br />
                 <div class="cardWrapper">
                     @foreach (var item in Model)
@@ -47,9 +46,6 @@
                                         </div>
                                         <div class="back">
                                             <div class="content">
-                                                <img src='https://chart.googleapis.com/chart?cht=qr&chl=SomeDataToQRify&chs=100x100' width='100' height='100' />
-
-
                                             </div>
                                         </div>
                                     </div>

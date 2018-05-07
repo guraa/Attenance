@@ -5,38 +5,42 @@
 
 @{
     ViewBag.Title = "Login";
-    var qr = "https://chart.googleapis.com/chart?cht=qr&chl=" + Model.Code + "&chs=100x100";
+    var qr = "https://chart.googleapis.com/chart?cht=qr&chl=" + Model.Code + "&chs=250x250";
 }
 <div>
     <div class="wrapper">
         <div class="containers">
             <br />
             <br />
-            <h1>Välkommen!</h1>
+            <h1>Välkommen till denna lektion, dagens lärare är: @Model.TeacherName</h1>
             <br />
             @if (Session["UserName"] != null)
             {
                 using (Html.BeginForm("DeleteClass", "Home", FormMethod.Post))
                 {
-                    <div class="cardWrapper">
-                        <div class="cardContainer">
-                            <div class="cardA">
-                                <div class="front">
-                                    <h3 class="cardTitle">
-                                        Dagens lärare: @Model.TeacherName
+                    <div class="col-sm-8">
+                        <div class="cardWrapper">
+                            <div class="cardContainer">
+                                <div class="cardA">
+                                    <div class="front">
                                         @Html.AntiForgeryToken()
                                         @Html.Hidden("InitId", Model.InitId)
-                                        <br />
-                                        <img src=@qr width='100' height='100' />
-                                        <br />
-                                        <button type="submit" name="Change" value="Delete" id="login-button">Ångra (Ta bort) id: @Model.InitId</button>
-                                        <button type="submit" name="Change" value="End" id="login-button">Avsluta klass: @Model.InitId</button>
-                                        <br />
-                                        <br />
-                                    </h3>
+
+                                        <img src=@qr width='250' height='250' />
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="submit" name="Change" value="Delete" id="login-button">Ångra (Ta bort) id: @Model.InitId</button>
+                        <br />
+                        <br />
+                        <button type="submit" name="Change" value="End" id="login-button">Avsluta klass: @Model.InitId</button>
+                        <br />
+                        <br />
+                        @{Html.RenderAction("showParticipantsForClass", "Home", new { ClassCode = Model.Code });}
+
                     </div>
                 }
             }

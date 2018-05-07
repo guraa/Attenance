@@ -33,23 +33,49 @@ namespace AttendanceApp.Controllers
             }
              else
             {
+                var search = from s in students
+                             where s.FirstName == get
+                             select new StudentsLogin() { FirstName = s.FirstName, Id = s.Id, LastName = s.LastName, Password = s.Password };
 
-                var student = from s in students
-                              join e in enroll on s.Id equals e.StudentId
-                              join c in classes on e.ClassId equals Convert.ToInt32(c.Id)
-                              join te in teacher on Convert.ToInt32(c.TeacherId) equals te.Id
-                              where s.FirstName == get
-                              select new StudentsClasses() { StudentName = s.FirstName, Class = c.ClassName, Teacher = te.FirstName };
-                             
-                return Ok(student);
+                return Ok(search);
+
+                //var student = from s in students
+                //              join e in enroll on s.Id equals e.StudentId
+                //              join c in classes on e.ClassId equals Convert.ToInt32(c.Id)
+                //              join te in teacher on Convert.ToInt32(c.TeacherId) equals te.Id
+                //              where s.FirstName == get
+                //              select new StudentsClasses() { StudentName = s.FirstName, Class = c.ClassName, Teacher = te.FirstName };
+
+                //return Ok(student);
 
             }
 
 
         }
-    
-        // GET api/values/5
-        public string Get(int id)
+
+        public IHttpActionResult Students(String student)
+        {
+            var students = db.Students.ToList();
+
+            if (students.Count == 0)
+            {
+                return Ok("Invalid");
+            }
+            else
+            {
+
+                var search = from s in students
+                              where s.FirstName == student
+                              select new StudentsLogin() { FirstName = s.FirstName, Id = s.Id,  LastName = s.LastName, Password = s.Password };
+
+                return Ok(search);
+
+            }
+
+        }
+
+            // GET api/values/5
+            public string Get(int id)
         {
             return "value";
         }
