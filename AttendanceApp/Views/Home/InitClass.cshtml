@@ -39,7 +39,7 @@
                         <button type="submit" name="Change" value="End" id="login-button">Avsluta klass: @Model.InitId</button>
                         <br />
                         <br />
-                        @{Html.RenderAction("showParticipantsForClass", "Home", new { ClassCode = Model.Code });}
+                        @{Html.RenderAction("ParticipationForClass", "Home", new { ClassCode = Model.Code });}
 
                     </div>
                 }

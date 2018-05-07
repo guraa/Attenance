@@ -66,16 +66,26 @@ namespace AttendanceApp.Controllers
         }
 
         [ChildActionOnly]
-        public List<Participation> showParticipantsForClass(string ClassCode)
+        public ActionResult ParticipationForClass(string ClassCode)
         {
             //använd action och partialview istället för att kunna populera listan på ett bra sätt + uppdatera partialview automatiskt. 
+            var participation = db.Participation.ToList();
+            var students = db.Students.ToList();
+
             using (AttendanceContext db = new AttendanceContext())
             {
-                var obj = db.Participation.Where(a => a.Code.Equals(ClassCode)).ToList();
+                var obj = (from p in participation
+                           join s in students on p.StudentId equals s.Id
+                           select new studentParticipation
+                           {
+                               Name = s.FirstName + " " + s.LastName,
+                               Message = p.StudentMessage
+                           }).ToList();
+                    
 
-                if(obj.Count() > 0)
-                { 
-                    return obj;
+                if (obj.Count() > 0)
+                {
+                    return PartialView(obj);
                 }
                 else
                 {

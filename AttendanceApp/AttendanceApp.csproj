@@ -206,6 +206,7 @@
     <Compile Include="SearchModels\ListClasses.cs" />
     <Compile Include="SearchModels\StartedClasses.cs" />
     <Compile Include="SearchModels\StudentLogin.cs" />
+    <Compile Include="SearchModels\studentParticipation.cs" />
     <Compile Include="SearchModels\StudentsClasses.cs" />
     <Compile Include="ValuesController1.cs" />
   </ItemGroup>
@@ -279,7 +280,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\InitClass.cshtml" />
-    <Content Include="Views\Shared\ParticipationForClass.cshtml" />
+    <Content Include="Views\Home\ParticipationForClass.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

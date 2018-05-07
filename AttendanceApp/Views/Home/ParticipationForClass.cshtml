@@ -1,0 +1,13 @@
+﻿@model IEnumerable<AttendanceApp.Models.studentParticipation>
+<meta http-equiv="refresh" content="5">
+<div>
+
+    <ul class="list-group">
+        @{
+            foreach (var i in Model)
+            {
+                <li class="list-group-item">@i.Name</li>
+            }
+        }
+    </ul>
+</div>
